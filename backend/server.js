@@ -8,7 +8,14 @@ const path = require('path');
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://public-space-project-7cayr1kze-kona-krupamanis-projects.vercel.app"
+  ],
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true
+}));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
